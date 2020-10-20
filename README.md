@@ -59,4 +59,4 @@ Where as AutoML is using predefined models to find the best model that maximizes
     also useful to evaluate a model. So using different metric will be beneficial.
 
 ## Proof of cluster clean up
-In the last cell of "udacity-project.ipynb", compute cluster was deleted using "AmlCompute.delete(cpu_cluster)". This proofs that clean up was done after the whole project was completed.
+In the last cell of "udacity-project.ipynb" file, compute cluster was deleted using "AmlCompute.delete(cpu_cluster)". This proofs that clean up was done after the whole project was completed.
