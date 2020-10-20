@@ -42,12 +42,7 @@ After using AutoML to select the best model, "VotingEnsemble" model was choosen 
 multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.91756.
 
 ## Pipeline comparison
-Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. 
-Though the difference is small minor but VotingEnsemble outperformed Logistic Regression. 
-The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. 
-Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. 
-Adding more values might solve the issue if optimal combination of hyperparamter values are found. 
-Where as AutoML is using predefined models to find the best model that maximizes primary metric.
+Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.00299314) but VotingEnsemble outperformed Logistic Regression. The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric.
 
 ## Future work
 -   Changing classification model in train.py file, as for this dataset other classification algorithms might be more efficient such as SVM.
