@@ -39,7 +39,7 @@ I have choosen BanditPolicy as an early stopping policy. BanditPolicy uses slack
 ## AutoML
 For AutoML Configuration, we have choosen "classification" as task, "accuracy" as primary metric, "y" variable as label column, and finally 5 fold cross validation.
 After using AutoML to select the best model, "VotingEnsemble" model was choosen by AutoML which is an ensemble machine learning model that combines the predictions from 
-multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.91756.
+multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.91756. As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. 
 
 ## Pipeline comparison
 Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.00299314) but VotingEnsemble outperformed Logistic Regression. The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric.
