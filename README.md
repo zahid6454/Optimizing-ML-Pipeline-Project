@@ -29,7 +29,7 @@ For Hyperdrive in "udacity-jupyter.ipynb" file:
 
 The goal of the Hyperdrive is to maximize the primary metric which is "Accuracy".
 
-After the compltiong of the parameter tuning the best parameter was selected "--C" = 0.1 and "--max_iter" = 100 to achieve the maximum "Accuracy" = 0.91456686.
+After the compltiong of the parameter tuning the best parameter was selected "--C" = 0.1 and "--max_iter" = 100 to achieve the maximum "Accuracy" = 0.91337134.
 
 I have choosen RandomParameterSampling as parameter sampler. For tuning a model, initially RandomParameterSampler is a good choice as the hyperparameter values for the model are randomly selected from the defined search space. Also, supports discrete and continuous hyperparameters and early termination of low-performance runs.
 
@@ -39,10 +39,21 @@ I have choosen BanditPolicy as an early stopping policy. BanditPolicy uses slack
 ## AutoML
 For AutoML Configuration, we have choosen "classification" as task, "accuracy" as primary metric, "y" variable as label column, and finally 5 fold cross validation.
 After using AutoML to select the best model, "VotingEnsemble" model was choosen by AutoML which is an ensemble machine learning model that combines the predictions from 
-multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.91756. As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. 
+multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.9194. As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. As for the Hyperparameters, VotingEnsemble takes the majority voting of several classification model. For that, it chooses the parameter for each of those model automatically. For example, 
+For SGDClassifierWrapper model it chose the value of the some of the following parameters:
+
+-   loss = modified_huber (It is a smooth loss that brings tolerance to outliers as well as probability estimates)
+-   learning_rate = constant (Learning Rate is equal for all the time.)
+-   max_iter = 1000 (The maximum number of passes over the training data.)
+-   power_t = 0.22222222222222 (The exponent for inverse scaling learning rate)
+-   class_weight = balanced (The “balanced” mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in 
+                    the input data as "n_samples / (n_classes * np.bincount(y)))"
+
+These are some of the values that were tuned and set by AutoML for the model SGDClassifierWrapper.
+
 
 ## Pipeline comparison
-Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.00299314) but VotingEnsemble outperformed Logistic Regression. The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric. But most importantly, AutoML works better than Hyperdrive because AutoML employs several different models to figure the best model to fit the data where as Hyperdrive uses only one.
+Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.00602866) but VotingEnsemble outperformed Logistic Regression. The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric. But most importantly, AutoML works better than Hyperdrive because AutoML employs several different models to figure the best model to fit the data where as Hyperdrive uses only one.
 
 ## Future work
 -   Changing classification model in train.py file, as for this dataset other classification algorithms might be more efficient such as SVM.
