@@ -41,9 +41,11 @@ I have choosen BanditPolicy as an early stopping policy. BanditPolicy uses slack
 For AutoML Configuration, we have choosen "classification" as task, "accuracy" as primary metric, "y" variable as label column, and finally 5 fold cross validation.
 After using AutoML to select the best model, "VotingEnsemble" model was choosen by AutoML which is an ensemble machine learning model that combines the predictions from 
 multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.9167. 
-As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. As for the Hyperparameters, VotingEnsemble takes the majority voting of several classification model. For that, it chooses the parameter for each of those model automatically. For example, 
-For SGDClassifierWrapper model it chose the value of the some of the following parameters:
+As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. As for the Hyperparameters, VotingEnsemble takes the majority voting of several classification model. For that, it chooses the parameter for each of those model automatically. For our case, it chose the value of the some of the following parameters:
 
+-   max_leaves = 31 (The maximum number of leaves in the forest)
+-   n_estimators = 25 (The number of trees in the forest.)
+-   reg_lambda = 1.7708333333333335 (L2 regularization term on weights. Increasing this value will make model more conservative.)
 -   loss = modified_huber (It is a smooth loss that brings tolerance to outliers as well as probability estimates)
 -   learning_rate = constant (Learning Rate is equal for all the time.)
 -   max_iter = 1000 (The maximum number of passes over the training data.)
@@ -51,7 +53,7 @@ For SGDClassifierWrapper model it chose the value of the some of the following p
 -   class_weight = balanced (The “balanced” mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in 
                     the input data as "n_samples / (n_classes * np.bincount(y)))"
 
-These are some of the values that were tuned and set by AutoML for the model SGDClassifierWrapper.
+Although there are several parameters that are tuned by AutoML, these are some of those values that were tuned and set by AutoML for the VotingEnsemble.
 
 
 ## Pipeline comparison
