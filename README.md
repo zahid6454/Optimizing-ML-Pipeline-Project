@@ -39,7 +39,8 @@ I have choosen BanditPolicy as an early stopping policy. BanditPolicy uses slack
 ## AutoML
 For AutoML Configuration, we have choosen "classification" as task, "accuracy" as primary metric, "y" variable as label column, and finally 5 fold cross validation.
 After using AutoML to select the best model, "VotingEnsemble" model was choosen by AutoML which is an ensemble machine learning model that combines the predictions from 
-multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.9194. As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. As for the Hyperparameters, VotingEnsemble takes the majority voting of several classification model. For that, it chooses the parameter for each of those model automatically. For example, 
+multiple other models. After completion of VotingEnsemble model execution, the Accuracy is calculated as 0.9167. 
+As for the hypereparameters, AutoML generates values for hyperparameter for each of its model automatically. As for the Hyperparameters, VotingEnsemble takes the majority voting of several classification model. For that, it chooses the parameter for each of those model automatically. For example, 
 For SGDClassifierWrapper model it chose the value of the some of the following parameters:
 
 -   loss = modified_huber (It is a smooth loss that brings tolerance to outliers as well as probability estimates)
@@ -53,7 +54,8 @@ These are some of the values that were tuned and set by AutoML for the model SGD
 
 
 ## Pipeline comparison
-Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.00602866) but VotingEnsemble outperformed Logistic Regression. The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric. But most importantly, AutoML works better than Hyperdrive because AutoML employs several different models to figure the best model to fit the data where as Hyperdrive uses only one.
+Upon comparison, VotingEnsemble which was choosen by AutoML has better "Accuracy" than Logistic Regression. Though the difference is very small (0.0047080926981791) but VotingEnsemble outperformed Logistic Regression. 
+The reason might be that in Hyperdrive as parameter sampler we are using RandomParameterSampling that chooses hyperparameter values for the model randomly. Also, in parameter sampler, we are passing 5 values for each of the hyperparameter/arguments. Adding more values might solve the issue if optimal combination of hyperparamter values are found. Where as AutoML is using predefined models to find the best model that maximizes primary metric. But most importantly, AutoML works better than Hyperdrive because AutoML employs several different models to figure the best model to fit the data where as Hyperdrive uses only one.
 
 ## Future work
 -   Changing classification model in train.py file, as for this dataset other classification algorithms might be more efficient such as SVM.
