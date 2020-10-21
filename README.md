@@ -24,8 +24,9 @@ For the "train.py" file:
 
 For Hyperdrive in "udacity-jupyter.ipynb" file:
 -   As a Parameter Sampler, RandomParameterSampling was used to tune the hyperparameter "--C" and "--max_iter".
--   As an Early Termination Policy, BanditPolicy was used with argument "evaluation_interval" and "slack_factor".
 -   As estimator, SKlearn was used where "train.py" was provided as a value to an argument "entry_script". 
+-   As an Early Termination Policy, BanditPolicy was used with argument "evaluation_interval" and "slack_factor". BanditPolciy terminates any run whos primary metrics is less than the slack factor of best run. The slack factor represents the value difference of primary matrics between a run and the best run in order to be terminated. There are other policies such as MedianStopping and TruncationSelection policy but BanditPolicy ensures that if accuracy drop is more than slack factor than it will termiate a run. This is why I chose this policy.
+    
 
 The goal of the Hyperdrive is to maximize the primary metric which is "Accuracy".
 
