@@ -29,7 +29,7 @@ For Hyperdrive in "udacity-jupyter.ipynb" file:
 
 The goal of the Hyperdrive is to maximize the primary metric which is "Accuracy".
 
-After the compltiong of the parameter tuning the best parameter was selected "--C" = 0.1 and "--max_iter" = 100 to achieve the maximum "Accuracy" = 0.91337134.
+After the compltiong of the parameter tuning the best parameter was selected "--C" = 0.5 and "--max_iter" = 150 to achieve the maximum "Accuracy" = 0.9119919073018209.
 
 I have choosen RandomParameterSampling as parameter sampler. For tuning a model, initially RandomParameterSampler is a good choice as the hyperparameter values for the model are randomly selected from the defined search space. Also, supports discrete and continuous hyperparameters and early termination of low-performance runs.
 
